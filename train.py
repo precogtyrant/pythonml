@@ -1,6 +1,7 @@
 import re
 import pandas as pd
 import numpy as np
+from sklearn import linear_model
 import matplotlib.pyplot as plt
 data = pd.read_csv("test.csv")
 data['DOB'] = data['DOB'].apply(lambda x : re.sub('.*/','',x))
@@ -9,7 +10,7 @@ data['Sex'] = data['Sex'].apply(lambda x : gender[x])
 #print(data.filter(["Age","Pay Rate","DOB","Sex"]))
 
 
-
+#self implementation
 def linear_reg(x_list,y_list):
 	x_sum = sum(x_list)
 	y_sum = sum(y_list)
@@ -27,6 +28,16 @@ def linear_reg(x_list,y_list):
 age = list(data["Age"])
 pay_rate = list(data["Pay Rate"])
 print(linear_reg(age,pay_rate))
+
+
+
+#implementation using sklearn
+model = linear_model.LinearRegression()
+age = data['Age']
+pay_rate =data['Pay Rate']
+d = model.fit(age[:,None],pay_rate)
+print(d.coef_)
+print(d.intercept_)
 
 
 
