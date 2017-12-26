@@ -1,8 +1,10 @@
 import re
 import pandas as pd
-import numpy as np
-from sklearn import linear_model
-import matplotlib.pyplot as plt
+import time
+# import numpy as np
+# from sklearn import linear_model
+# import matplotlib.pyplot as plt
+start_time = time.time()
 data = pd.read_csv("test.csv")
 data['DOB'] = data['DOB'].apply(lambda x : re.sub('.*/','',x))
 gender = {"Male":0,"Female":1}
@@ -12,6 +14,8 @@ data['Sex'] = data['Sex'].apply(lambda x : gender[x])
 
 #self implementation
 def linear_reg(x_list,y_list):
+	#generating the values for all the required parameters for calculating linear regression
+	
 	x_sum = sum(x_list)
 	y_sum = sum(y_list)
 	x_multiplied_y_sum = sum([x_list*y_list for x_list,y_list in zip(x_list,y_list)])
@@ -27,15 +31,16 @@ def linear_reg(x_list,y_list):
 age = list(data["Age"])
 pay_rate = list(data["Pay Rate"])
 print(linear_reg(age,pay_rate))
-
+elapsed_time = time.time() - start_time
+print(elapsed_time);
 
 #implementation using sklearn
-model = linear_model.LinearRegression()
-age = data['Age']
-pay_rate =data['Pay Rate']
-d = model.fit(age[:,None],pay_rate)
-print(d.coef_)
-print(d.intercept_)
+# model = linear_model.LinearRegression()
+# age = data['Age']
+# pay_rate =data['Pay Rate']
+# d = model.fit(age[:,None],pay_rate)
+# print(d.coef_)
+# print(d.intercept_)
 
 
 
