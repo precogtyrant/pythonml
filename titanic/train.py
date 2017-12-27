@@ -23,6 +23,7 @@ def get_title(name):
 
 
 
+
 titanic_data = pd.read_csv("titanic.csv")
 
 
@@ -53,5 +54,4 @@ train_Y = train["Survived"]
 model.fit(train_x,train_Y)
 prediction = model.predict(test_x)
 prediction_result = pd.DataFrame({"Survived":prediction,"PassengerId":test["PassengerId"], "Name":test["Name"]})
-prediction_result["Survived"] = prediction_result["Survived"]
-print(accuracy_score(test["Survived"],prediction.astype(int)))
+print(accuracy_score(test["Survived"],prediction))

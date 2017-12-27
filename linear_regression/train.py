@@ -1,3 +1,5 @@
+#Implementation of Linear Regression using the standard formula to calculate the coefficient and y intercept
+# for 2d data and comparing it with the results obtained from skelarn's linear regression model for the same data
 import re
 import pandas as pd
 import numpy as np

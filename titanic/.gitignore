@@ -1,3 +1,5 @@
 /.vscode
 /.idea
 fornotebook.py
+kaggle.py
+titanic_randomforest.py
